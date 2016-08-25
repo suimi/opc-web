@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<server ip="172.16.1.100" name="Freelance2000OPCServer.27.1" define="3000t/d生产线">
+    <groups>
+        <group name="窑系统" id="1001" >
+            <items>
+                <item order="1" name="G1AC_SDF_M" path="GAPL" define="1#一次风机变频器柜速度" unit="Hz"/>
+                <item order="2" name="G1AC_CUN_M" path="GAPL" define="1#一次风机变频器柜电流" unit="A"/>
+                <item order="3" name="GPT09_P_M" path="GAPL" define="1#一次风机出口压力" unit="kPa"/>
+                <item order="4" name="G2AC_SDF_M" path="GAPL" define="2#一次风机变频器柜速度" unit="Hz"/>
+                <item order="5" name="G2AC_CUN_M" path="GAPL" define="2#一次风机变频器柜电流" unit="A"/>
+                <item order="6" name="GPT10_P_M" path="GAPL" define="2#一次风机出口压力" unit="kPa"/>
+                <item order="7" name="G3AC_SDF_M" path="GAPL" define="3#一次风机变频器柜速度" unit="Hz"/>
+                <item order="8" name="G3AC_CUN_M" path="GAPL" define="3#一次风机变频器柜电流" unit="A"/>
+                <item order="9" name="GPT11_P_M" path="GAPL" define="3#一次风机出口压力" unit="kPa"/>
+                <item order="10" name="GTT10_T_M" path="GAPL" define="二次风温" unit="℃"/>
+                <item order="11" name="GPT07_P_M" path="GAPL" define="窑门罩压力" unit="Pa"/>
+                <item order="12" name="G20AC_SDF_M" path="GAPL" define="蓖床速度" unit="次/分"/>
+                <item order="13" name="G21ALP_CUN_M" path="GAPL" define="破碎机电流" unit="A"/>
+                <item order="14" name="G7M_CUN_M" path="GAPL" define="斜拉链电流" unit="A"/>
+                <item order="15" name="GLT02_L_M" path="GAPL" define="低碱熟料库料位" unit="m"/>
+                <item order="16" name="GLT01_L_M" path="GAPL" define="熟料库料位" unit="m"/>
+                <item order="17" name="G1AQCJKWD_M" path="GAPL" define="窑头锅炉进口温度" unit="℃"/>
+                <item order="18" name="G1REC003FY_M" path="GAPL" define="窑头锅炉进口负压" unit="Pa"/>
+                <item order="19" name="G1AQCKWD_M" path="GAPL" define="窑头锅炉出口温度" unit="℃"/>
+                <item order="20" name="YTGLCKFY_M" path="GAPL" define="窑头锅炉出口负压" unit="Pa"/>
+                <item order="21" name="I_1UW_M" path="GAPL" define="1#机组发电功率" unit="MV"/>
+                <item order="22" name="GTT11_T_M" path="GAPL" define="电收尘入口气体温度" unit="℃"/>
+                <item order="23" name="GPT08_P_M" path="GAPL" define="电收尘入口气体压力" unit="Pa"/>
+                <item order="24" name="GTT12_T_M" path="GAPL" define="窑头引风机入口温度" unit="℃"/>
+                <item order="25" name="GPT09_P_M" path="GAPL" define="窑头引风机入口压力" unit="Pa"/>
+                <item order="26" name="GZZ07_ZF_M" path="GAPL" define="窑头引风机入口阀门开度" unit="%"/>
+                <item order="27" name="G3M_CUN_M" path="GAPL" define="窑头引风机电流" unit="A"/>
+                <item order="28" name="F4AC3_SDF_M" path="FAPL" define="窑主电机传动速度" unit="rpm"/>
+                <item order="29" name="F4AC3_CUN_M" path="FAPL" define="窑主电机电流" unit="A"/>
+                <item order="30" name="FDLD01_FF_M" path="FAPL" define="窑投料量" unit="t/h"/>
+                <item order="31" name="FDLD01_TOL_M" path="FAPL" define="窑投料量月累计" unit="t"/>
+                <item order="32" name="BLT01_L_M" path="FAPL" define="生料库料位" unit="m"/>
+                <item order="33" name="F34M_CUN_M" path="FAPL" define="窑尾斗式提升机电流" unit="A"/>
+                <item order="34" name="FPT01_P_M" path="FAPL" define="一级筒A出口压力" unit="Pa"/>
+                <item order="35" name="FTT01_T_M" path="FAPL" define="一级筒A出口温度" unit="℃"/>
+                <item order="36" name="FPT02_P_M" path="FAPL" define="一级筒B出口压力" unit="Pa"/>
+                <item order="37" name="FTT02_T_M" path="FAPL" define="一级筒B出口温度" unit="℃"/>
+                <item order="38" name="FPT11_P_M" path="FAPL" define="分解炉出口A压力" unit="Pa"/>
+                <item order="39" name="FTT11_T_M" path="FAPL" define="分解炉出口A温度" unit="℃"/>
+                <item order="40" name="FPT12_P_M" path="FAPL" define="分解炉出口B压力" unit="Pa"/>
+                <item order="41" name="FTT12_T_M" path="FAPL" define="分解炉出口B温度" unit="℃"/>
+                <item order="42" name="FPT22_P_M" path="FAPL" define="五级筒A锥体压力" unit="Pa"/>
+                <item order="43" name="FPT23_P_M" path="FAPL" define="五级筒B锥体压力" unit="Pa"/>
+                <item order="44" name="FPT13_P_M" path="FAPL" define="窑尾烟室压力" unit="Pa"/>
+                <item order="45" name="FTT13_T_M" path="FAPL" define="窑尾烟室温度" unit="℃"/>
+                <item order="46" name="FZZ01_ZF_M" path="FAPL" define="三次风#1蝶阀电动执行器" unit="%"/>
+                <item order="47" name="FZZ02_ZF_M" path="FAPL" define="三次风#2蝶阀电动执行器" unit="%"/>
+                <item order="48" name="FPT24_P_M" path="FAPL" define="三次风1#支管入炉压力" unit="Pa"/>
+                <item order="49" name="FPT25_P_M" path="FAPL" define="三次风2#支管入炉压力" unit="Pa"/>
+                <item order="50" name="FTT17_T_M" path="FAPL" define="三次风温度" unit="℃"/>
+                <item order="51" name="F22AC_CUN_M" path="FAPL" define="高温风机电流" unit="A"/>
+                <item order="52" name="F22AC_SDF_M" path="FAPL" define="高温风机速度" unit="Hz"/>
+                <item order="53" name="FPT26_P_M" path="FAPL" define="高温风机入口压力" unit="Pa"/>
+                <item order="54" name="FTT26_T_M" path="FAPL" define="高温风机入口温度" unit="℃"/>
+                <item order="55" name="F1SPJKWD_M" path="FAPL" define="窑尾锅炉进口温度" unit="℃"/>
+                <item order="56" name="F1SPCKWD_M" path="FAPL" define="窑尾锅炉出口温度" unit="℃"/>
+            </items>
+        </group>
+        <group name="生料系统" id="1002" supGroupName="">
+            <items>
+                <item order="1" name="SAPL_AI003" path="BAPL" define="矿山板喂机变频柜反馈" unit="Hz"/>
+                <item order="2" name="A8AC_SET" path="BAPL" define="石灰石配比" unit="%"/>
+                <item order="3" name="A7AC_SET" path="BAPL" define="粘土配比" unit="%"/>
+                <item order="4" name="A6AC_SET" path="BAPL" define="硫酸渣配比" unit="%"/>
+                <item order="5" name="A5AC_SET" path="BAPL" define="砂岩配比" unit="%"/>
+                <item order="6" name="A_FEED_M" path="BAPL" define="生料磨台时" unit="t/h"/>
+                <item order="7" name="A_LJ_M" define="生料磨产量月累计" unit="t"/>
+                <item order="8" name="B25M_CUN_M" path="BAPL" define="生料磨主电机电流" unit="A"/>
+                <item order="9" name="B39M_CUN_M" path="BAPL" define="入磨提升机电流" unit="A"/>
+                <item order="10" name="B6M_CUN_M" path="BAPL" define="生料入库提升机电流" unit="A"/>
+                <item order="11" name="E1M_CUN_M" path="BAPL" define="尾排风机电流" unit="A"/>
+                <item order="12" name="ETT03_T_M" path="BAPL" define="袋收尘入口气体温度" unit="℃"/>
+                <item order="13" name="EPT03_P_M" path="BAPL" define="袋收尘入口气体压力" unit="Pa"/>
+                <item order="14" name="ETT04_T_M" path="BAPL" define="袋收尘出口气体温度" unit="℃"/>
+                <item order="15" name="EPT04_P_M" path="BAPL" define="袋收尘出口气体压力" unit="Pa"/>
+            </items>
+        </group>
+        <group name="煤磨系统" id="1003" >
+            <items>
+                <item order="1" name="K16M_CUN_M" path="KAPL" define="煤磨主电机电流" unit="A"/>
+                <item order="2" name="K16AC_V1_M" path="KAPL" define="磨机振动" unit="mm/s"/>
+                <item order="3" name="KTT01_T_M" path="KAPL" define="煤磨磨机入口温度" unit="℃"/>
+                <item order="4" name="KPT01_P_M" path="KAPL" define="煤磨磨机入口压力" unit="Pa"/>
+                <item order="5" name="GTT13_T_M" path="GAPL" define="去煤磨热风温度" unit="℃"/>
+                <item order="6" name="GZZ05_ZF_M" path="GAPL" define="至煤磨热风阀门开度" unit="%"/>
+                <item order="7" name="KTT02_T_M" path="KAPL" define="煤磨磨机出口温度" unit="℃"/>
+                <item order="8" name="KPT02_P_M" path="KAPL" define="煤磨磨机出口压力" unit="Pa"/>
+                <item order="9" name="K3AC_FG_M" path="KAPL" define="原煤秤流量反馈" unit="t/h"/>
+                <item order="10" name="K12AC_FF_M" path="KAPL" define="窑尾喂煤秤流量反馈" unit="t/h"/>
+                <item order="11" name="K11AC_FF_M" path="KAPL" define="窑头喂煤秤流量反馈" unit="t/h"/>
+                <item order="12" name="KPT05_P_M" path="KAPL" define="1#罗茨风机出口压力" unit="Pa"/>
+                <item order="13" name="KPT07_P_M" path="KAPL" define="3#罗茨风机出口压力" unit="Pa"/>
+                <item order="14" name="KZZ01_ZF_M" path="KAPL" define="袋收尘出口执行器开度" unit="%"/>
+                <item order="15" name="KTT03_T_M" path="KAPL" define="袋收尘入口气体温度" unit="℃"/>
+                <item order="16" name="KPT04_P_M" path="KAPL" define="袋收尘出口气体压力" unit="Pa"/>
+                <item order="17" name="KTT04_T_M" path="KAPL" define="袋收尘出口气体温度" unit="℃"/>
+            </items>
+        </group>
+        <group name="水泥系统" id="1004" >
+            <items>
+                <item order="1" name="L3AC1_SET" path="MAPL" define="熟料配比" unit="%"/>
+                <item order="2" name="L3AC2_SET" path="MAPL" define="矿渣配比" unit="%"/>
+                <item order="3" name="L4AC1_SET" path="MAPL" define="石灰石配比" unit="%"/>
+                <item order="4" name="L4AC2_SET" path="MAPL" define="石膏配比" unit="%"/>
+                <item order="5" name="M55AC_SET" path="MAPL" define="粉煤灰配比" unit="%"/>
+                <item order="6" name="L43AC_SET" path="MAPL" define="湿粉煤灰配比" unit="%"/>
+                <item order="7" name="L42AC_SET" path="MAPL" define="脱硫石膏配比" unit="%"/>
+                <item order="8" name="M_FEED_M" path="MAPL" define="水泥磨台时" unit="t/h"/>
+                <item order="9" name="M_LJ_M" path="MAPL" define="水泥磨产量月累计" unit="t"/>
+                <item order="10" name="M27M_CUN_M" path="MAPL" define="水泥磨主电机电流" unit="A"/>
+                <item order="11" name="M13AC_ZF_M" path="MAPL" define="磨选粉机变频器频率" unit="Hz"/>
+                <item order="12" name="M13AC_CUN_M" path="MAPL" define="磨选粉机变频器电流" unit="A"/>
+                <item order="13" name="M40AC_CUN1_M" path="MAPL" define="辊压机动辊电机电流" unit="A"/>
+                <item order="14" name="M40AC_CUN2_M" path="MAPL" define="辊压机定辊电机电流" unit="A"/>
+                <item order="15" name="MPT07_P_M" path="MAPL" define="出磨气体压力" unit="Pa"/>
+                <item order="16" name="MTT02_T_M" path="MAPL" define="出磨气体温度" unit="℃"/>
+                <item order="17" name="M16M_CUN_M" path="MAPL" define="出磨提升机电流" unit="A"/>
+                <item order="18" name="MPT06_P_M" path="MAPL" define="磨1#收尘器入口气体压力" unit="Pa"/>
+                <item order="19" name="MTT04_T_M" path="MAPL" define="磨1#收尘器入口气体温度" unit="℃"/>
+                <item order="20" name="MPT09_P_M" path="MAPL" define="磨主排风机进口气体压力" unit="Pa"/>
+                <item order="21" name="MZZ04_ZF_M" path="MAPL" define="磨主排风机进口阀门开度" unit="%"/>
+                <item order="22" name="NLT01_L_M" path="MAPL" define="1#水泥库料位" unit="m"/>
+                <item order="23" name="NLT02_L_M" path="MAPL" define="2#水泥库料位" unit="m"/>
+                <item order="24" name="NLT03_L_M" path="MAPL" define="3#水泥库料位" unit="m"/>
+                <item order="25" name="NLT04_L_M" path="MAPL" define="4#水泥库料位" unit="m"/>
+                <item order="26" name="NLT05_L_M" path="MAPL" define="5#水泥库料位" unit="m"/>
+                <item order="27" name="NLT06_L_M" path="MAPL" define="6#水泥库料位" unit="m"/>
+            </items>
+        </group>
+    </groups>
+</server>

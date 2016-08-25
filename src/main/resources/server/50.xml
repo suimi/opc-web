@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<server ip="172.16.1.50" name="Freelance2000OPCServer.58.1" define="余热发电">
+    <groups>
+        <group name="余热发电" id="501" >
+            <items>
+                <item order="1" name="I_1UW" path="PS" define="1#发电机有功功率" unit="MV"/>
+                <item order="2" name="I_2UW" path="PS" define="2#发电机有功功率" unit="MV"/>
+                <item order="3" name="I_1151DA02MT01FB" path="PS" define="1#AQC出口烟风阀反馈" unit="%"/>
+                <item order="4" name="I_1150SB01TT01" path="PS" define="1#AQC进口烟风温度" unit="℃"/>
+                <item order="5" name="I_1150SB01PT01" path="PS" define="1#AQC进口烟风压力" unit="Pa"/>
+                <item order="6" name="I_1151DA04MT01FB" path="PS" define="1#AQC进口冷风阀反馈" unit="%"/>
+                <item order="7" name="I_1151DA01MT01FB" path="PS" define="1#AQC进口烟风阀反馈1" unit="%"/>
+                <item order="8" name="I_1XRFLZXQ" path="PS" define="1#AQC进口烟风阀反馈2" unit="%"/>
+                <item order="9" name="I_1151DA03MT01FB" path="PS" define="1#AQC烟风进口旁通阀" unit="%"/>
+                <item order="10" name="I_115SB1SD1PT01" path="PS" define="1#高压汽包压力" unit="MPa"/>
+                <item order="11" name="I_1153PP02PT01" path="PS" define="1#AQC高压汽包给水压力" unit="MPa"/>
+                <item order="12" name="I_1153PP02TT01" path="PS" define="2#AQC高压汽包给水温度" unit="℃"/>
+                <item order="13" name="I_1152PP01FT01" path="PS" define="3#AQC高压汽包给水流量" unit="t/h"/>
+                <item order="14" name="I_1152PP01PT01" path="PS" define="1#高压过热器出口压力" unit="MPa"/>
+                <item order="15" name="I_1152PP01TT01" path="PS" define="2#高压过热器出口温度" unit="℃"/>
+                <item order="16" name="I_115SB1SD2PT01" path="PS" define="1#低压汽包压力" unit="MPa"/>
+                <item order="17" name="I_1153PP02PT01" path="PS" define="1#AQC低压汽包给水压力" unit="MPa"/>
+                <item order="18" name="I_1153PP03TT01" path="PS" define="1#AQC低压汽包给水温度" unit="℃"/>
+                <item order="19" name="I_1156PP01FT01" path="PS" define="2#AQC低压汽包给水流量" unit="t/h"/>
+                <item order="20" name="I_1156PP01PT01" path="PS" define="1#低压过热器出口压力" unit="MPa"/>
+                <item order="21" name="I_1156PP01TT01" path="PS" define="2#低压过热器出口温度" unit="℃"/>
+                <item order="22" name="I_2151DA02MT01FB" path="PS" define="2#AQC出口烟风阀反馈" unit="%"/>
+                <item order="23" name="I_2150SB01TT02" path="PS" define="2#AQC进口烟风温度" unit="℃"/>
+                <item order="24" name="I_2150SB01PT01" path="PS" define="2#AQC进口烟风压力" unit="Pa"/>
+                <item order="25" name="I_2151DA03MT01FB" path="PS" define="2#AQC进口冷风阀反馈" unit="%"/>
+                <item order="26" name="GZZ04_ZF" path="PS" define="2#AQC烟风进口旁通阀反馈" unit="%"/>
+                <item order="27" name="I_215SB1SD1PT01" path="PS" define="2#AQC高压汽包压力" unit="MPa"/>
+                <item order="28" name="I_2152PP01PT01" path="PS" define="2#AQC高压蒸汽压力" unit="MPa"/>
+                <item order="29" name="I_2152PP01TT01" path="PS" define="2#AQC高压蒸汽温度" unit="℃"/>
+                <item order="30" name="I_2152PP01FT01" path="PS" define="2#AQC高压蒸汽流量" unit="t/h"/>
+                <item order="31" name="I_215SB1SD2PT01" path="PS" define="2#AQC低压段汽包压力" unit="MPa"/>
+                <item order="32" name="I_2156PP01PT01" path="PS" define="2#AQC低压过热器压力" unit="MPa"/>
+                <item order="33" name="I_2156PP01TT01" path="PS" define="2#AQC低压过热器温度" unit="℃"/>
+                <item order="34" name="I_2156PP01FT01" path="PS" define="2#AQC低压过热器流量" unit="t/h"/>
+                <item order="35" name="I_1160SB01TT01" path="PS" define="1#SP进口温度" unit="℃"/>
+                <item order="36" name="I_1160SB01PT01" path="PS" define="1#SP进口压力" unit="Pa"/>
+                <item order="37" name="I_1161DA03MT01FB" path="PS" define="1#SP烟风旁通阀" unit="%"/>
+                <item order="38" name="I_116SB1SD1PT01" path="PS" define="1#SP汽包压力" unit="MPa"/>
+                <item order="39" name="I_1162PP01PT01" path="PS" define="1#SP过热器出口压力" unit="MPa"/>
+                <item order="40" name="I_1162PP01TT01" path="PS" define="1#SP过热器出口温度" unit="℃"/>
+                <item order="41" name="I_1162PP01FT01" path="PS" define="1#SP主蒸汽流量" unit="t/h"/>
+                <item order="42" name="I_2160SB01PT01" path="PS" define="2#SP进口压力" unit="Pa"/>
+                <item order="43" name="I_2160SB01TT01" path="PS" define="2#SP进口温度" unit="℃"/>
+                <item order="44" name="I_2161DA03MT01FB" path="PS" define="2#SP烟风旁通阀" unit="%"/>
+                <item order="45" name="I_216SB1SD1PT01" path="PS" define="2#SP汽包压力" unit="MPa"/>
+                <item order="46" name="I_2162PP01PT01" path="PS" define="2#SP过热器出口压力" unit="MPa"/>
+                <item order="47" name="I_2162PP01TT01" path="PS" define="2#SP过热器出口温度" unit="℃"/>
+                <item order="48" name="I_2162PP01FT01" path="PS" define="2#SP主蒸汽流量" unit="t/h"/>
+                <item order="49" name="I_1152PP01PT02" path="PS" define="蒸汽母管1#AQC压力" unit="MPa"/>
+                <item order="50" name="I_1162PP01PT02" path="PS" define="蒸汽母管1#SP压力" unit="MPa"/>
+                <item order="51" name="I_2152PP01PT02" path="PS" define="蒸汽母管2#AQC压力" unit="MPa"/>
+                <item order="52" name="I_2162PP01PT02" path="PS" define="蒸汽母管2#SP压力" unit="MPa"/>
+                <item order="53" name="I_1152PP01TC02" path="PS" define="蒸汽母管1#AQC温度" unit="℃"/>
+                <item order="54" name="I_1162PP01TC02" path="PS" define="蒸汽母管1#SP温度" unit="℃"/>
+                <item order="55" name="I_2152PP01TC02" path="PS" define="蒸汽母管2#AQC温度" unit="℃"/>
+                <item order="56" name="I_2162PP01TC02" path="PS" define="蒸汽母管2#SP温度" unit="℃"/>
+                <item order="57" name="I_0122PP01PT03" path="PS" define="蒸汽母管压力" unit="MPa"/>
+                <item order="58" name="I_0122PP01TC03" path="PS" define="蒸汽母管温度" unit="℃"/>
+                <item order="59" name="I_0120VB01LT01" path="PS" define="除氧器水位" unit="mm"/>
+                <item order="60" name="I_0123PP02PT01" path="PS" define="1#母管给水压力" unit="MPa"/>
+                <item order="61" name="I_0123PU01MT01CF" path="PS" define="1#给水泵电流" unit="A"/>
+                <item order="62" name="I_0123PU01MT01" path="PS" define="1#给水泵频率" unit="Hz"/>
+                <item order="63" name="I_0123PP03PT01" path="PS" define="2#母管给水压力" unit="MPa"/>
+                <item order="64" name="I_0123PU02MT01CF" path="PS" define="2#给水泵电流" unit="A"/>
+                <item order="65" name="I_0123PU02MT01" path="PS" define="2#给水泵频率" unit="Hz"/>
+                <item order="66" name="I_0123PU03MT01CF" path="PS" define="3#给水泵电流" unit="A"/>
+                <item order="67" name="I_0123PU03MT01" path="PS" define="3#给水泵频率" unit="Hz"/>
+                <item order="68" name="I_0122PP01PT01" path="PS" define="1#汽轮机进汽压力" unit="MPa"/>
+                <item order="69" name="I_0122PP01TC01" path="PS" define="1#汽轮机进汽温度" unit="℃"/>
+                <item order="70" name="I_0122PP01FT01" path="PS" define="1#汽轮机进汽流量" unit="t/h"/>
+                <item order="71" name="I_0122PP02TC01" path="PS" define="2#汽轮机进汽温度" unit="℃"/>
+                <item order="72" name="I_0122PP02PT01" path="PS" define="2#汽轮机进汽压力" unit="MPa"/>
+                <item order="73" name="I_0122PP02FT01" path="PS" define="2#汽轮机进汽流量" unit="t/h"/>
+                <item order="74" name="I_0120TR01HR01" path="PS" define="1#汽机排汽温度" unit="℃"/>
+                <item order="75" name="I_0120TR01PT02" path="PS" define="1#汽机排汽压力" unit="MPa"/>
+                <item order="76" name="I_120TR1CD1HR03" path="PS" define="1#凝汽器出口水温1" unit="℃"/>
+                <item order="77" name="I_120TR1CD1HR04" path="PS" define="1#凝汽器出口水温2" unit="℃"/>
+                <item order="78" name="I_120TR1CD1LT01" path="PS" define="1#冷凝器热井水位" unit="mm"/>
+                <item order="79" name="I_120TR1CD1HR05" path="PS" define="1#冷凝器热井温度" unit="℃"/>
+                <item order="80" name="I_120TR1CD1HR01" path="PS" define="1#凝汽器进口水温1" unit="℃"/>
+                <item order="81" name="I_120TR1CD1HR02" path="PS" define="1#凝汽器进口水温2" unit="℃"/>
+                <item order="82" name="I_0124PP02FT01" path="PS" define="1#凝结水流量" unit="t/h"/>
+                <item order="83" name="I_0124PP02PT01" path="PS" define="1#凝结水压力" unit="MPa"/>
+                <item order="84" name="I_0124PP05FT01" path="PS" define="2#凝结水流量" unit="t/h"/>
+                <item order="85" name="I_0124PP05PT01" path="PS" define="2#凝结水压力" unit="MPa"/>
+                <item order="86" name="I_0120TR02HR01" path="PS" define="2#汽机排汽温度" unit="℃"/>
+                <item order="87" name="I_0120TR02PT02" path="PS" define="2#汽机排汽压力" unit="MPa"/>
+                <item order="88" name="I_120TR2CD1HR03" path="PS" define="2#凝汽器出口水温1" unit="℃"/>
+                <item order="89" name="I_120TR2CD1HR04" path="PS" define="2#凝汽器出口水温2" unit="℃"/>
+                <item order="90" name="I_120TR2CD1LT01" path="PS" define="2#冷凝器热井水位" unit="mm"/>
+                <item order="91" name="I_120TR2CD1HR05" path="PS" define="2#冷凝器热井温度" unit="℃"/>
+                <item order="92" name="I_120TR2CD1HR01" path="PS" define="2#凝汽器进口水温1" unit="℃"/>
+                <item order="93" name="I_120TR2CD1HR02" path="PS" define="2#凝汽器进口水温2" unit="℃"/>
+            </items>
+        </group>
+    </groups>
+</server>
