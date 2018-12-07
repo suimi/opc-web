@@ -6,7 +6,7 @@
 package com.suimi.opc.controllers;
 
 import com.suimi.opc.bean.OpcData;
-import com.suimi.opc.services.OpcReadService2;
+import com.suimi.opc.services.OpcReadService;
 import com.suimi.opc.services.config.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,23 +21,23 @@ import java.util.List;
 public class OpcController {
 
     @Autowired
-    public OpcReadService2 opcReadService2;
+    public OpcReadService opcReadService;
 
     @RequestMapping(value = "readData")
     public ModelAndView readData(String groupId) {
-        OpcData opcResponse = opcReadService2.readData(groupId);
+        OpcData opcResponse = opcReadService.readData(groupId);
         return new ModelAndView("data", "data", opcResponse);
     }
 
     @RequestMapping(value = "ajaxReadData")
     @ResponseBody
     public OpcData ajaxReadData(String groupId) {
-        return opcReadService2.readData(groupId);
+        return opcReadService.readData(groupId);
     }
 
     @RequestMapping(value = "getGroups")
     public ModelAndView getGroups() {
-        List<Server> servers = opcReadService2.getGroups();
+        List<Server> servers = opcReadService.getGroups();
         return new ModelAndView("groups", "servers", servers);
     }
 

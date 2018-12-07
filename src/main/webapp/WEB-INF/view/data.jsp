@@ -30,7 +30,7 @@
         var totalTimes = 30 * 60;
         var intervalId;
         function updateData() {
-            $.get("ajaxReadData.do", {groupId: "${data.groupId}"}, function (result) {
+            $.get("ajaxReadData", {groupId: "${data.groupId}"}, function (result) {
                 $.each(result.items, function () {
                     var id = "#" + this.id.replace(".","_");
                     var value = "" + this.value + this.unit;

@@ -18,6 +18,7 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 
@@ -26,8 +27,8 @@ public class OpcConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(OpcConfig.class);
 
-    @javax.annotation.Resource
-    private List<Resource> serverDefineResources;
+    @Value("${opc.define.resources}")
+    private Resource[] serverDefineResources;
 
     private List<Server> servers = new ArrayList<Server>();
 
@@ -43,22 +44,15 @@ public class OpcConfig {
                 Server server = (Server)unmarshaller.unmarshal(inputStream);
                 servers.add(server);
             } catch (JAXBException e) {
-                logger.error("unmarshal server define file error", e);
+                logger.error("unmarshal server define file error:{}", actionDefineResource, e);
             } catch (IOException e) {
-                logger.error("open server define file error", e);
+                logger.error("open server define file error:{}",actionDefineResource, e);
             } finally {
                 IOUtils.closeQuietly(inputStream);
             }
         }
     }
 
-    public List<Resource> getServerDefineResources() {
-        return serverDefineResources;
-    }
-
-    public void setServerDefineResources(List<Resource> serverDefineResources) {
-        this.serverDefineResources = serverDefineResources;
-    }
 
     public List<Server> getServers() {
         return servers;

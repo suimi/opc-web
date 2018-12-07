@@ -1,34 +1,38 @@
-package com.suimi.opc.services;
+package com.suimi.opc.services.example;
 
 import javafish.clients.opc.JOpc;
 import javafish.clients.opc.component.OpcGroup;
 import javafish.clients.opc.component.OpcItem;
+import javafish.clients.opc.exception.CoInitializeException;
+import javafish.clients.opc.exception.CoUninitializeException;
 import javafish.clients.opc.exception.ComponentNotFoundException;
 import javafish.clients.opc.exception.ConnectivityException;
 import javafish.clients.opc.exception.SynchReadException;
 import javafish.clients.opc.exception.UnableAddGroupException;
 import javafish.clients.opc.exception.UnableAddItemException;
-import javafish.clients.opc.variant.Variant;
 
-public class SynchReadItemExample {
+public class SynchReadGroupExample {
   public static void main(String[] args) throws InterruptedException {
-    SynchReadItemExample test = new SynchReadItemExample();
-    
-    JOpc.coInitialize();
-    
-    JOpc jopc = new JOpc("localhost", "Matrikon.OPC.Simulation", "JOPC1");
 
-    OpcItem item1 = new OpcItem("Random.ArrayOfReal8", true, "");
-    //OpcItem item1 = new OpcItem("Random.Real8", true, "");
-    //OpcItem item1 = new OpcItem("Random.String", true, "");
+    try {
+      JOpc.coInitialize();
+    }
+    catch (CoInitializeException e1) {
+      e1.printStackTrace();
+    }
     
-    OpcGroup group = new OpcGroup("group1", true, 500, 0.0f);
+    JOpc jopc = new JOpc("172.16.1.50", "Freelance2000OPCServer.58.1","Jopc3");
     
+    OpcItem item1 = new OpcItem("I_1XRFLZXQ", true, "PS");
+
+    OpcGroup group = new OpcGroup("group1", true, 10, 0.0f);
+
     group.addItem(item1);
-    jopc.addGroup(group);
-    
+
+
     try {
       jopc.connect();
+      jopc.addGroup(group);
       System.out.println("JOPC client is connected...");
     }
     catch (ConnectivityException e2) {
@@ -46,31 +50,35 @@ public class SynchReadItemExample {
       e2.printStackTrace();
     }
     
-    synchronized(test) {
-      test.wait(50);
-    }
+//    synchronized(test) {
+//      test.wait(2000);
+//    }
     
-    // Synchronous reading of item
-    int cycles = 7;
+    // Synchronous reading of group
+    int cycles = 100;
     int acycle = 0;
     while (acycle++ < cycles) {
-      synchronized(test) {
-        test.wait(1000);
-      }
-      
+//      synchronized(test) {
+//        test.wait(50);
+//      }
+
       try {
-        OpcItem responseItem = jopc.synchReadItem(group, item1);
-        System.out.println(responseItem);
-        System.out.println(Variant.getVariantName(responseItem.getDataType()) + ": " + responseItem.getValue());
+        OpcGroup responseGroup = jopc.synchReadGroup(group);
+        System.out.println(responseGroup);
       }
       catch (ComponentNotFoundException e1) {
         e1.printStackTrace();
       }
-      catch (SynchReadException e) {
-        e.printStackTrace();
+      catch (SynchReadException e1) {
+        e1.printStackTrace();
       }
     }
     
-    JOpc.coUninitialize();
+    try {
+      JOpc.coUninitialize();
+    }
+    catch (CoUninitializeException e) {
+      e.printStackTrace();
+    }
   }
 }

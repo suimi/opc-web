@@ -30,9 +30,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 @Service
-public class OpcReadService2 {
+public class OpcReadService {
 
-    private static final Logger logger = LoggerFactory.getLogger(OpcReadService2.class);
+    private static final Logger logger = LoggerFactory.getLogger(OpcReadService.class);
 
     @Autowired
     private OpcConfig opcConfig;

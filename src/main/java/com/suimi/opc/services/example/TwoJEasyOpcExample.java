@@ -1,4 +1,4 @@
-package com.suimi.opc.services;
+package com.suimi.opc.services.example;
 
 import javafish.clients.opc.JCustomOpc;
 import javafish.clients.opc.JEasyOpc;

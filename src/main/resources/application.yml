@@ -1,0 +1,10 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+
+updateTimes: 500
+opc:
+  define:
+    resources: classpath*:server/*.xml

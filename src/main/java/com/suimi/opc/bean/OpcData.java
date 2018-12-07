@@ -10,8 +10,6 @@ import java.util.List;
 
 public class OpcData {
 
-
-
     private String groupName;
 
     private String groupId;

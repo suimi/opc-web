@@ -135,6 +135,7 @@
                 <item order="25" name="NLT04_L_M" path="MAPL" define="4#水泥库料位" unit="m"/>
                 <item order="26" name="NLT05_L_M" path="MAPL" define="5#水泥库料位" unit="m"/>
                 <item order="27" name="NLT06_L_M" path="MAPL" define="6#水泥库料位" unit="m"/>
+            </items>
         </group>
         <group name="设备运行参数" id="10042">
             <items>

@@ -42,7 +42,7 @@
                         <ul>
                             <c:forEach items="${server.groups}" var="group" varStatus="vs">
                                 <li>
-                                    <a class="item-link item-content" onclick="javascript:window.open('<%= request.getContextPath()%>/opc/readData.do?groupId=${group.id}')"
+                                    <a class="item-link item-content" onclick="javascript:window.open('<%= request.getContextPath()%>/opc/readData?groupId=${group.id}')"
                                        href="#">
                                         <div class="item-media"><i class="icon icon-f7"></i></div>
                                         <div class="item-inner">
@@ -56,7 +56,7 @@
                 </c:forEach>
             </div>
         </div>
-        <form action="<%= request.getContextPath()%>/opc/readData.do" id="readForm" method="post">
+        <form action="<%= request.getContextPath()%>/opc/readData" id="readForm" method="post">
             <input id="groupId" name="groupId" style="display: none"/>
         </form>
     </div>
