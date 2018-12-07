@@ -23,6 +23,8 @@ import javafish.clients.opc.exception.UnableAddItemException;
 import javafish.clients.opc.exception.UnableRemoveGroupException;
 import javafish.clients.opc.exception.UnableRemoveItemException;
 import javafish.clients.opc.lang.Translate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <b>Java OPC class</b>
@@ -46,6 +48,8 @@ import javafish.clients.opc.lang.Translate;
  * @author arnal2@seznam.cz
  */
 public class JOpc extends JCustomOpc implements Runnable {
+
+  private static final Logger logger = LoggerFactory.getLogger(JOpc.class);
   
   /* thread instance */
   protected Thread thread;
@@ -290,9 +294,11 @@ public class JOpc extends JCustomOpc implements Runnable {
       registerGroupsNative();
     }
     catch (UnableAddGroupException e) {
+      logger.error("UnableAddGroupException",e);
       throw new UnableAddGroupException(Translate.getString("UNABLE_ADD_GROUP_EXCEPTION_UNKNOWN"));
     }
     catch (UnableAddItemException e) {
+      logger.error("UnableAddItemException",e);
       throw new UnableAddItemException(Translate.getString("UNABLE_ADD_ITEM_EXCEPTION_UNKNOWN"));
     }
   }

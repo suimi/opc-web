@@ -14,8 +14,8 @@
                 <item order="9" name="I_1151DA03MT01FB" path="PS" define="1#AQC烟风进口旁通阀" unit="%"/>
                 <item order="10" name="I_115SB1SD1PT01" path="PS" define="1#高压汽包压力" unit="MPa"/>
                 <item order="11" name="I_1153PP02PT01" path="PS" define="1#AQC高压汽包给水压力" unit="MPa"/>
-                <item order="12" name="I_1153PP02TT01" path="PS" define="2#AQC高压汽包给水温度" unit="℃"/>
-                <item order="13" name="I_1152PP01FT01" path="PS" define="3#AQC高压汽包给水流量" unit="t/h"/>
+                <item order="12" name="I_1153PP02TT01" path="PS" define="1#AQC高压汽包给水温度" unit="℃"/>
+                <item order="13" name="I_1152PP01FT01" path="PS" define="1#AQC高压汽包给水流量" unit="t/h"/>
                 <item order="14" name="I_1152PP01PT01" path="PS" define="1#高压过热器出口压力" unit="MPa"/>
                 <item order="15" name="I_1152PP01TT01" path="PS" define="2#高压过热器出口温度" unit="℃"/>
                 <item order="16" name="I_115SB1SD2PT01" path="PS" define="1#低压汽包压力" unit="MPa"/>

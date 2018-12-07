@@ -24,11 +24,10 @@
             <constructor-arg value="server/100.xml"/>
         </bean>
         <bean class="org.springframework.core.io.ClassPathResource">
-            <constructor-arg value="server/200.xml"/>
+            <constructor-arg value="server/200.xml"/>        </bean>      <bean class="org.springframework.core.io.ClassPathResource">            <constructor-arg
+value="server/50.xml"/>
         </bean>
         <bean class="org.springframework.core.io.ClassPathResource">
-            <constructor-arg value="server/50.xml"/>
-        </bean>
-    </utils:list>
+            <constructor-arg value="server/152.xml"/>         </bean>        <bean class="org.springframework.core.io.ClassPathResource">            <constructor-arg  value="server/159.xml"/>        </bean> </utils:list>
 
 </beans>

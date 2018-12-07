@@ -5,12 +5,17 @@
 
 package com.suimi.opc.services;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import com.suimi.opc.bean.ItemBean;
+import com.suimi.opc.bean.OpcData;
+import com.suimi.opc.services.config.Group;
+import com.suimi.opc.services.config.Item;
+import com.suimi.opc.services.config.OpcConfig;
+import com.suimi.opc.services.config.Server;
+import javafish.clients.opc.JOpc;
+import javafish.clients.opc.component.OpcGroup;
+import javafish.clients.opc.component.OpcItem;
+import javafish.clients.opc.exception.*;
+import javafish.clients.opc.variant.Variant;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,24 +23,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.suimi.opc.bean.ItemBean;
-import com.suimi.opc.bean.OpcData;
-import com.suimi.opc.services.config.Group;
-import com.suimi.opc.services.config.Item;
-import com.suimi.opc.services.config.OpcConfig;
-import com.suimi.opc.services.config.Server;
-
-import javafish.clients.opc.JOpc;
-import javafish.clients.opc.component.OpcGroup;
-import javafish.clients.opc.component.OpcItem;
-import javafish.clients.opc.exception.CoInitializeException;
-import javafish.clients.opc.exception.CoUninitializeException;
-import javafish.clients.opc.exception.ConnectivityException;
-import javafish.clients.opc.exception.SynchReadException;
-import javafish.clients.opc.exception.UnableAddGroupException;
-import javafish.clients.opc.exception.UnableAddItemException;
-import javafish.clients.opc.exception.UnableRemoveGroupException;
-import javafish.clients.opc.variant.Variant;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 @Service
 public class OpcReadService2 {
@@ -71,29 +63,40 @@ public class OpcReadService2 {
         List<Server> servers = opcConfig.getServers();
         for (Server server : servers) {
             String id = server.getName() + "@" + server.getIp();
-            JOpc jOpc = new JOpc(server.getIp(), server.getName(), id);
-            for (Group group : server.getGroups()) {
-                OpcGroup opcGroup = new OpcGroup(group.getName() + group.getId(), true, 1000, 0.0f);
-                for (Item item : group.getItems()) {
-                    OpcItem opcItem = new OpcItem(item.getName(), true, item.getPath());
-                    opcGroup.addItem(opcItem);
-                }
-                opcGroupCache.put(group.getId(), opcGroup);
-                jOpc.addGroup(opcGroupCache.get(group.getId()));
-                groupOpc.put(group.getId(), jOpc);
-                defineGroup.put(group.getId(), group);
-            }
             try {
-                jOpc.connect();
-                jOpc.registerGroups();
-                logger.info("connect opc server:{}", id);
-            } catch (UnableAddGroupException e) {
-                logger.error("初始化出错" + id, e);
-            } catch (UnableAddItemException e) {
-                logger.error("初始化出错" + id, e);
-            } catch (ConnectivityException e) {
-                logger.error("初始化出错" + id, e);
+                JOpc jOpc = new JOpc(server.getIp(), server.getName(), id);
+                for (Group group : server.getGroups()) {
+                    OpcGroup opcGroup = new OpcGroup(group.getName() + group.getId(), true, 1000, 0.0f);
+                    for (Item item : group.getItems()) {
+                        OpcItem opcItem = new OpcItem(item.getName(), true, item.getPath());
+                        opcGroup.addItem(opcItem);
+                    }
+                    for (Group subGroup : group.getGroups()) {
+                        for (Item item : subGroup.getItems()) {
+                            OpcItem opcItem = new OpcItem(item.getName(), true, item.getPath());
+                            opcGroup.addItem(opcItem);
+                        }
+                    }
+                    opcGroupCache.put(group.getId(), opcGroup);
+                    jOpc.addGroup(opcGroupCache.get(group.getId()));
+                    groupOpc.put(group.getId(), jOpc);
+                    defineGroup.put(group.getId(), group);
+                }
+                try {
+                    jOpc.connect();
+                    jOpc.registerGroups();
+                    logger.info("connect opc server:{}", id);
+                } catch (UnableAddGroupException e) {
+                    logger.error("初始化出错" + id, e);
+                } catch (UnableAddItemException e) {
+                    logger.error("初始化出错" + id, e);
+                } catch (ConnectivityException e) {
+                    logger.error("初始化出错" + id, e);
+                }
+            } catch (Exception e) {
+                logger.error("Server[{}]初始化出错", id, e);
             }
+
         }
     }
 
@@ -135,25 +138,34 @@ public class OpcReadService2 {
             for (OpcItem item : items) {
                 itemMap.put(item.getAccessPath() + item.getItemName(), item);
             }
-            List<Item> defineItems = defineGroup.getItems();
-            List<ItemBean> itemBeans = new ArrayList<ItemBean>();
-            for (Item defineItem : defineItems) {
-                String id = defineItem.getPath() + defineItem.getName();
-                OpcItem opcItem = itemMap.get(id);
-                if (opcItem != null) {
-                    logger.debug("id:{}, value:{}", id, opcItem.getValue());
-                    Variant value = opcItem.getValue();
-                    String strValue = value.getString();
-                    if (StringUtils.isBlank(strValue)) {
-                        strValue = "0";
-                    }
-                    itemBeans.add(defineItem.getOrder() - 1, new ItemBean(defineItem, String.format("%.2f", Double.valueOf(strValue))));
-                }
+            List<ItemBean> itemBeans = prepareItemBeen(defineGroup.getItems(), itemMap);
+            List<OpcData> subData = new ArrayList<OpcData>();
+            for (Group subGroup : defineGroup.getGroups()) {
+                List<ItemBean> subGroupItemBeans = prepareItemBeen(subGroup.getItems(), itemMap);
+                subData.add(new OpcData(groupId, subGroup.getName(), subGroupItemBeans));
             }
-            cacheData.put(groupId, new OpcData(groupId, defineGroup.getName(), itemBeans));
+            cacheData.put(groupId, new OpcData(groupId, defineGroup.getName(), itemBeans, subData));
         } catch (SynchReadException e) {
             logger.error("读取失败", e);
         }
+    }
+
+    private List<ItemBean> prepareItemBeen(List<Item> defineItems, Map<String, OpcItem> itemMap) {
+        List<ItemBean> itemBeans = new ArrayList<ItemBean>();
+        for (Item defineItem : defineItems) {
+            String id = defineItem.getPath() + defineItem.getName();
+            OpcItem opcItem = itemMap.get(id);
+            if (opcItem != null) {
+                logger.debug("id:{}, value:{}", id, opcItem.getValue());
+                Variant value = opcItem.getValue();
+                String strValue = value.getString();
+                if (StringUtils.isBlank(strValue)) {
+                    strValue = "0";
+                }
+                itemBeans.add(defineItem.getOrder() - 1, new ItemBean(defineItem, String.format("%.2f", Double.valueOf(strValue))));
+            }
+        }
+        return itemBeans;
     }
 
     private void printData(String groupId) {

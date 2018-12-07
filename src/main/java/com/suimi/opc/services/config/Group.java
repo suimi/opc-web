@@ -5,14 +5,9 @@
 
 package com.suimi.opc.services.config;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Group {
@@ -26,12 +21,13 @@ public class Group {
     @XmlAttribute
     private String define;
 
-    @XmlAttribute
-    private String supGroupName;
-
     @XmlElementWrapper(name = "items")
     @XmlElement(name = "item")
     private List<Item> items = new ArrayList<Item>();
+
+    @XmlElementWrapper(name = "groups")
+    @XmlElement(name = "group")
+    private List<Group> groups = new ArrayList<Group>();
 
     public String getId() {
         return id;
@@ -65,11 +61,11 @@ public class Group {
         this.items = items;
     }
 
-    public String getSupGroupName() {
-        return supGroupName;
+    public List<Group> getGroups() {
+        return groups;
     }
 
-    public void setSupGroupName(String supGroupName) {
-        this.supGroupName = supGroupName;
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 }

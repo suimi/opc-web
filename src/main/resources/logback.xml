@@ -7,7 +7,7 @@
     </appender>
 
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>../logs/kkl.log</file>
+        <file>../logs/opc.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>../logs/opc.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
@@ -17,11 +17,11 @@
     </appender>
 
     <!-- project default level -->
-    <logger name="com.suimi.opc" level="debug"/>
-    <logger name="org.springframework" level="INFO"/>
+    <logger name="com.zlinepay.opc" level="info"/>
+    <logger name="org.springframework" level="info"/>
 
     <root level="warn">
-        <appender-ref ref="console"/>
-        <!--<appender-ref ref="rollingFile"/>-->
+        <!--<appender-ref ref="console"/>-->
+        <appender-ref ref="rollingFile"/>
     </root>
 </configuration>

@@ -13,8 +13,7 @@ import javafish.clients.opc.exception.UnableAddItemException;
 
 public class SynchReadGroupExample {
   public static void main(String[] args) throws InterruptedException {
-    SynchReadGroupExample test = new SynchReadGroupExample();
-    
+
     try {
       JOpc.coInitialize();
     }
@@ -22,22 +21,18 @@ public class SynchReadGroupExample {
       e1.printStackTrace();
     }
     
-    JOpc jopc = new JOpc("localhost", "Matrikon.OPC.Simulation", "JOPC1");
+    JOpc jopc = new JOpc("172.16.1.50", "Freelance2000OPCServer.58.1","Jopc3");
     
-    OpcItem item1 = new OpcItem("Random.Real8", true, "");
-    OpcItem item2 = new OpcItem("Random.Real8", true, "");
-    OpcItem item3 = new OpcItem("Random.Real8", true, "");
-    
+    OpcItem item1 = new OpcItem("I_1XRFLZXQ", true, "PS");
+
     OpcGroup group = new OpcGroup("group1", true, 10, 0.0f);
-    
+
     group.addItem(item1);
-    group.addItem(item2);
-    group.addItem(item3);
-    
-    jopc.addGroup(group);
-    
+
+
     try {
       jopc.connect();
+      jopc.addGroup(group);
       System.out.println("JOPC client is connected...");
     }
     catch (ConnectivityException e2) {
@@ -55,18 +50,18 @@ public class SynchReadGroupExample {
       e2.printStackTrace();
     }
     
-    synchronized(test) {
-      test.wait(2000);
-    }
+//    synchronized(test) {
+//      test.wait(2000);
+//    }
     
     // Synchronous reading of group
     int cycles = 100;
     int acycle = 0;
     while (acycle++ < cycles) {
-      synchronized(test) {
-        test.wait(50);
-      }
-      
+//      synchronized(test) {
+//        test.wait(50);
+//      }
+
       try {
         OpcGroup responseGroup = jopc.synchReadGroup(group);
         System.out.println(responseGroup);
