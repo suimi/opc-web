@@ -13,6 +13,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @date 2018/12/7
  */
 @SpringBootApplication public class OpcApplication extends SpringBootServletInitializer {
+
+
     public static void main(String[] args) {
         SpringApplication.run(OpcApplication.class, args);
     }

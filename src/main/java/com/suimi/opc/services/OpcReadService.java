@@ -21,8 +21,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +32,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 @Service
-public class OpcReadService {
+@Profile("prod")
+public class OpcReadService implements IOpcReadService {
 
     private static final Logger logger = LoggerFactory.getLogger(OpcReadService.class);
 
@@ -52,6 +55,13 @@ public class OpcReadService {
     @Value("${updateTimes}")
     private long updateTimes;
 
+    @Value("${library.path:./lib/JCustomOpc}")
+    private String libPath;
+
+    @PostConstruct
+    public void postInit() {
+        System.load(libPath);
+    }
 
     private void init() {
         try {
@@ -100,11 +110,11 @@ public class OpcReadService {
         }
     }
 
-    public List<Server> getGroups() {
+    @Override public List<Server> getGroups() {
         return opcConfig.getServers();
     }
 
-    public OpcData readData(String groupId) {
+    @Override public OpcData readData(String groupId) {
         if (System.currentTimeMillis() - timestamp > updateTimes) {
             readRemoteAll();
             printData(null);
@@ -112,7 +122,7 @@ public class OpcReadService {
         return cacheData.get(groupId);
     }
 
-    public synchronized void readRemoteAll() {
+    private synchronized void readRemoteAll() {
         if (System.currentTimeMillis() - timestamp > updateTimes) {
             init();
             for (String groupId : defineGroup.keySet()) {
@@ -123,7 +133,7 @@ public class OpcReadService {
         }
     }
 
-    public void readRemoteData(String groupId) {
+    private void readRemoteData(String groupId) {
         logger.info("read remote data:{}", groupId);
         JOpc jOpc = groupOpc.get(groupId);
         OpcGroup opcGroup = this.opcGroupCache.get(groupId);

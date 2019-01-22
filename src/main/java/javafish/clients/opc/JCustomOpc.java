@@ -64,13 +64,6 @@ abstract public class JCustomOpc {
   /** important: specify OPC object in dll-library (not modify) */
   private int id;
 
-  static {
-    // load class properties
-    props = PropertyLoader.loadProperties(JCustomOpc.class);
-    // load native library OPC Client
-    System.loadLibrary(props.getProperty("library.path"));
-  }
-
   /**
    * Create new custom OPC client
    *

@@ -8,3 +8,5 @@ updateTimes: 500
 opc:
   define:
     resources: classpath*:server/*.xml
+library:
+  path: JCustomOpc.dll
